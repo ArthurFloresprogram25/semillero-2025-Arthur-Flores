@@ -1,0 +1,178 @@
+/* Estilos CV Minimalista Profesional - Azul Oscuro + Blanco */
+:root {
+  --bg: #0e1726;          /* fondo principal oscuro azulado */
+  --bg-alt: #15273b;      /* bloques */
+  --bg-soft: #1f3347;     /* resaltes suaves */
+  --primary: #1d64f2;     /* azul principal vivo */
+  --primary-alt: #0f56d6; /* hover */
+  --text: #ffffff;        /* texto principal */
+  --text-dim: #d2dae5;    /* texto secundario */
+  --text-mute: #95a4b8;   /* texto tenue */
+  --border: #264463;      /* bordes */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow: 0 4px 12px rgba(0,0,0,.45);
+  --shadow-lg: 0 8px 28px rgba(0,0,0,.5);
+  --gradient: linear-gradient(135deg,#1d64f2,#0e3a84 70%);
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--font-body);
+  background: radial-gradient(circle at 30% 20%, #162b42, #0e1726 55%) fixed;
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  padding: 2rem 1rem;
+}
+
+.cv-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: rgba(21,39,59,0.55);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+/* Header */
+.cv-header {
+  background: var(--gradient);
+  padding: 3.5rem 2.5rem 2.75rem;
+  text-align: center;
+  position: relative;
+}
+.cv-header::after {
+  content:''; position:absolute; inset:0; background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.08), transparent 60%);
+}
+.cv-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem,4.8vw,3.1rem);
+  font-weight: 600;
+  letter-spacing: -.5px;
+  margin-bottom: .5rem;
+}
+.cv-header .title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-bottom: 1.75rem;
+}
+.contact-info { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap: .85rem; }
+.contact-item {
+  display:flex; align-items:center; gap:.55rem;
+  font-size:.85rem; background: rgba(255,255,255,.06);
+  padding:.65rem .75rem; border-radius: var(--radius-sm);
+  border:1px solid rgba(255,255,255,.08);
+}
+.contact-item i { color: var(--text-dim); font-size: .95rem; }
+.contact-item a, .contact-item span { color: var(--text-dim); text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.contact-item a:hover { color: var(--text); }
+
+/* Botón descargar */
+.download-btn {
+  position: fixed; top: 1.2rem; right: 1.2rem; z-index: 50;
+  background: var(--primary); color: #fff; border:none; cursor:pointer;
+  font-family: var(--font-body); font-size:.85rem; font-weight:600;
+  padding:.75rem 1.15rem; border-radius: 100px;
+  display:flex; align-items:center; gap:.5rem;
+  box-shadow: var(--shadow);
+  transition:.25s ease;
+}
+.download-btn:hover { background: var(--primary-alt); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.download-btn:active { transform: translateY(-1px); }
+
+/* Secciones */
+.cv-section { padding: 2.2rem 2.2rem 2rem; border-top:1px solid rgba(255,255,255,.06); }
+.cv-section:first-of-type { border-top:none; }
+.section-title {
+  font-family: var(--font-heading); font-size:1.15rem; font-weight:600; letter-spacing:.5px;
+  margin-bottom:1.1rem; text-transform:uppercase; color:#fff;
+  display:flex; align-items:center; gap:.6rem;
+}
+.section-title::before { content:''; width:34px; height:3px; background: var(--primary); border-radius:4px; }
+
+.profile-text { font-size:.95rem; color: var(--text-dim); max-width: 980px; text-align:justify; }
+
+/* Experiencia */
+.experience-item { background: var(--bg-alt); border:1px solid var(--border); border-radius: var(--radius); padding:1.3rem 1.25rem 1.05rem; margin-bottom:1.15rem; box-shadow: var(--shadow-sm); }
+.experience-item:last-child { margin-bottom:0; }
+.job-header { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:.55rem; }
+.job-title { font-size:1rem; font-weight:600; color:#fff; }
+.job-company { font-size:.85rem; font-weight:600; color: var (--primary); }
+.job-period { font-size:.7rem; font-weight:500; color: var(--text-mute); letter-spacing:.5px; }
+.job-description { font-size:.8rem; color: var(--text-dim); line-height:1.45; margin-bottom:.6rem; }
+.job-achievements { list-style:none; }
+.job-achievements li { position:relative; padding-left:1rem; font-size:.75rem; color: var(--text-dim); margin-bottom:.35rem; line-height:1.35; }
+.job-achievements li::before { content:'•'; position:absolute; left:0; top:0; color: var(--primary); font-weight:700; }
+
+/* Grid Habilidades */
+.skills-grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }
+.skill-category { background: var(--bg-alt); border:1px solid var(--border); padding:1rem .9rem .85rem; border-radius: var(--radius); }
+.skill-category h4 { font-size:.8rem; font-weight:600; color:#fff; margin-bottom:.45rem; letter-spacing:.5px; text-transform:uppercase; }
+.skill-list { font-size:.7rem; line-height:1.4; color: var(--text-dim); }
+
+/* Proyectos */
+.project-item { background: var(--bg-alt); border:1px solid var(--border); padding:1rem .95rem .8rem; border-radius: var(--radius); margin-bottom:.9rem; }
+.project-item:last-child { margin-bottom:0; }
+.project-name { font-size:.85rem; font-weight:600; color:#fff; margin-bottom:.35rem; }
+.project-description { font-size:.75rem; color: var(--text-dim); line-height:1.4; margin-bottom:.4rem; }
+.project-tech { font-size:.65rem; color: var(--text-mute); font-family: 'JetBrains Mono', monospace; letter-spacing:.5px; }
+
+/* Educación */
+.education-item { background: var(--bg-alt); border:1px solid var(--border); padding:1rem .95rem .75rem; border-radius: var(--radius); margin-bottom:.75rem; }
+.education-item:last-child { margin-bottom:0; }
+.degree { font-size:.8rem; font-weight:600; color:#fff; margin-bottom:.25rem; }
+.institution { font-size:.7rem; font-weight:600; color: var(--primary); margin-bottom:.15rem; }
+.period { font-size:.65rem; color: var(--text-mute); letter-spacing:.5px; }
+
+/* Contacto */
+.contact-section { background: var(--bg-soft); border:1px solid var(--border); border-radius: var(--radius); padding:1.5rem 1.3rem 1.25rem; }
+.contact-intro { font-size:.8rem; color: var(--text-dim); line-height:1.5; margin-bottom:1rem; }
+.contact-intro strong { color:#fff; font-weight:600; }
+.contact-methods { display:grid; gap:.75rem; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }
+.contact-method { display:flex; gap:.65rem; align-items:flex-start; background: var(--bg-alt); border:1px solid var(--border); padding:.7rem .75rem .6rem; border-radius: var(--radius-sm); text-decoration:none; transition:.25s; }
+.contact-method:hover { background: var(--primary); border-color: var(--primary); box-shadow: var(--shadow); }
+.contact-method:hover i, .contact-method:hover .contact-label, .contact-method:hover .contact-value { color:#fff; }
+.contact-method i { font-size:.9rem; color: var(--primary); margin-top:.1rem; }
+.contact-label { font-size:.6rem; text-transform:uppercase; letter-spacing:.6px; color: var(--text-mute); font-weight:600; margin-bottom:2px; }
+.contact-value { font-size:.7rem; color: var(--text-dim); font-weight:500; word-break:break-word; }
+
+/* Quick nav */
+.quick-nav { position:fixed; top:5.6rem; right:1.2rem; display:flex; flex-direction:column; gap:.55rem; z-index:40; }
+.nav-btn { background: var(--bg-alt); color:#fff; border:1px solid var(--border); padding:.55rem .8rem; font-size:.7rem; font-weight:600; border-radius: var(--radius-sm); display:flex; align-items:center; gap:.45rem; text-decoration:none; letter-spacing:.4px; transition:.25s; }
+.nav-btn:hover { background: var(--primary); border-color: var(--primary); box-shadow: var(--shadow-sm); }
+.nav-btn i { font-size:.7rem; }
+
+/* Responsivo */
+@media (max-width: 820px) {
+  .download-btn { position:static; margin:0 auto 1rem; display:flex; }
+  .quick-nav { position:static; flex-direction:row; flex-wrap:wrap; justify-content:center; margin:0 0 1.2rem; }
+  body { padding:1.2rem .7rem; }
+  .cv-header { padding:2.8rem 1.5rem 2.2rem; }
+  .cv-section { padding:1.8rem 1.5rem 1.6rem; }
+}
+@media (max-width: 520px) {
+  .contact-info { grid-template-columns:1fr; }
+  .cv-header h1 { font-size:2.2rem; }
+  .cv-header .title { font-size:.9rem; }
+  .section-title { font-size:1rem; }
+}
+
+/* Impresión */
+@media print {
+  body { background:#fff; padding:0; }
+  .download-btn, .quick-nav { display:none !important; }
+  .cv-container { background:#fff; box-shadow:none; backdrop-filter:none; border:none; }
+  .cv-header { background:#0f56d6; color:#fff; }
+  .experience-item, .skill-category, .project-item, .education-item, .contact-section { background:#fff; border:1px solid #d7e2ee; box-shadow:none; }
+  .section-title::before { background:#0f56d6; }
+  .project-tech, .job-period, .period { color:#555 !important; }
+}
