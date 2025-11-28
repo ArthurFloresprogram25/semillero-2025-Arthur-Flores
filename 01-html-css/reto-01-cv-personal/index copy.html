@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio | Curriculum</title>
+
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #05060a;
+      --bg-elevated: #0b0f1a;
+      --accent: #00d4ff;
+      --accent-2: #7c3aed;
+      --text-main: #f5f5f5;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2933;
+      --radius-lg: 18px;
+      --radius-sm: 999px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, #05060a 52%, #020308 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, var(--accent) 0, var(--accent-2) 35%, #020617 100%);
+      box-shadow: 0 0 18px rgba(0, 212, 255, 0.5);
+    }
+
+    .logo-text {
+      font-weight: 600;
+      font-size: 0.98rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.88rem;
+    }
+
+    .top-links a {
+      color: var(--text-muted);
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .top-links a:hover {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .pill {
+      border-radius: var(--radius-sm);
+      padding: 6px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.1));
+      backdrop-filter: blur(10px);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 3vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-role {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.2));
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #020617;
+      box-shadow: 0 16px 38px rgba(0, 212, 255, 0.4);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(0, 212, 255, 0.55);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.7);
+      transform: translateY(-1px);
+    }
+
+    /* Card de "código" para mostrar skills de programación */
+    .hero-code-card {
+      background: radial-gradient(circle at top right, #111827 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #4b5563;
+    }
+
+    .dot:nth-child(1) { background: #f97373; }
+    .dot:nth-child(2) { background: #facc15; }
+    .dot:nth-child(3) { background: #4ade80; }
+
+    .code-lang-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.75rem;
+    }
+
+    .code-body {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.4), transparent 55%);
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .code-line span:first-child {
+      width: 22px;
+      color: #4b5563;
+      text-align: right;
+      user-select: none;
+    }
+
+    .token-keyword { color: #7dd3fc; }
+    .token-fn      { color: #a5b4fc; }
+    .token-attr    { color: #facc15; }
+    .token-string  { color: #6ee7b7; }
+    .token-comment { color: #6b7280; font-style: italic; }
+    .token-tag     { color: #f472b6; }
+
+    .code-glow {
+      position: absolute;
+      inset: 30% -40% -40% 40%;
+      background: radial-gradient(circle at 0% 0%, rgba(0, 212, 255, 0.25), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* SECCIONES GENERALES */
+    section {
+      margin-bottom: 42px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+      gap: 28px;
+    }
+
+    .about p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .highlight-card {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.4));
+      padding: 12px 14px;
+      font-size: 0.82rem;
+    }
+
+    .highlight-number {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .skills-card {
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%);
+      padding: 16px 18px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .skills-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .skills-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.2));
+      color: #e5e7eb;
+    }
+
+    /* PROYECTOS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(155deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.3));
+      padding: 16px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-chip {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .project-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .project-tech {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 10px;
+    }
+
+    .project-actions a {
+      font-size: 0.8rem;
+      border-radius: 999px;
+      padding: 6px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .project-actions a:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.8);
+      transform: translateY(-1px);
+    }
+
+    .project-glow {
+      position: absolute;
+      inset: -40% 40% 40% -40%;
+      background: radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.3), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* EXPERIENCIA / EDUCACIÓN */
+    .timeline {
+      border-left: 1px solid rgba(55, 65, 81, 0.9);
+      margin-left: 8px;
+      padding-left: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 4px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -10px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle, var(--accent), var(--accent-2));
+      box-shadow: 0 0 14px rgba(0, 212, 255, 0.7);
+    }
+
+    .timeline-meta {
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .timeline-role {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .timeline-org {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      padding-bottom: 1px;
+      border-bottom: 1px dashed transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page {
+        padding-inline: 16px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-mark">
+        <div class="logo-circle"></div>
+        <div class="logo-text">Portafolio / CV</div>
+      </div>
+      <div class="top-links">
+        <span class="pill">Diseño + Programación</span>
+        <a href="#projects">Proyectos</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experiencia</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <div class="hero-role">Desarrollador Frontend · Diseñador UI</div>
+        <h1>
+          Hola, soy <span>Tu Nombre Aquí</span>.
+        </h1>
+        <p class="hero-subtitle">
+          Combino diseño minimalista con código limpio para crear interfaces modernas,
+          rápidas y centradas en la experiencia del usuario.
+        </p>
+
+        <div class="hero-meta">
+          <span>+3 años creando productos digitales</span>
+          <span>Especializado en JavaScript &amp; React</span>
+          <span>Enfoque en UX y micro-interacciones</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#" class="btn-primary">Descargar CV</a>
+          <a href="#projects" class="btn-ghost">Ver proyectos</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta de código -->
+      <div class="hero-code-card">
+        <div class="code-header">
+          <div class="code-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="code-lang-pill">portfolio.jsx</div>
+        </div>
+        <div class="code-body">
+          <div class="code-line">
+            <span>01</span>
+            <span><span class="token-keyword">const</span> <span class="token-fn">developer</span> <span class="token-attr">=</span> &#123;</span>
+          </div>
+          <div class="code-line">
+            <span>02</span>
+            <span>  name: <span class="token-string">"Tu Nombre"</span>,</span>
+          </div>
+          <div class="code-line">
+            <span>03</span>
+            <span>  role: <span class="token-string">"Frontend &amp; UI Designer"</span>,</span>
+          </div>
+          <div class="code-line">
+            <span>04</span>
+            <span>  stack: [<span class="token-string">"HTML"</span>, <span class="token-string">"CSS"</span>, <span class="token-string">"JavaScript"</span>, <span class="token-string">"React"</span>],</span>
+          </div>
+          <div class="code-line">
+            <span>05</span>
+            <span>  focus: <span class="token-string">"Experiencias limpias, rápidas y elegantes"</span>,</span>
+          </div>
+          <div class="code-line">
+            <span>06</span>
+            <span>&#125;;</span>
+          </div>
+          <div class="code-line">
+            <span>07</span>
+            <span class="token-comment">// Diseño + código con intención.</span>
+          </div>
+          <div class="code-line">
+            <span>08</span>
+            <span><span class="token-tag">&lt;UI/&gt;</span> <span class="token-keyword">meets</span> <span class="token-tag">&lt;Code/&gt;</span></span>
+          </div>
+        </div>
+        <div class="code-glow"></div>
+      </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="about">
+      <h2 class="section-title">Sobre mí</h2>
+      <div class="about">
+        <div>
+          <p>
+            Soy un desarrollador orientado a detalle que disfruta tanto del diseño visual
+            como de la lógica del código. Me gusta crear interfaces claras, coherentes
+            y fáciles de usar, apoyándome en buenas prácticas de diseño y patrones modernos
+            de desarrollo web.
+          </p>
+        </div>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="highlight-number">+3 años</div>
+            <div>Experiencia en desarrollo de interfaces web modernas.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">+10</div>
+            <div>Proyectos entre landing pages, dashboards y e-commerce.</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">UI/UX</div>
+            <div>Enfoque en jerarquía visual, contraste y experiencia.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skills-card">
+          <h3>Diseño &amp; UI/UX</h3>
+          <p>Interfaces limpias, tipografía cuidada y sistemas de diseño consistentes.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Prototipado</span>
+            <span class="skill-tag">Design Systems</span>
+            <span class="skill-tag">Responsive Design</span>
+          </div>
+        </div>
+        <div class="skills-card">
+          <h3>Frontend &amp; Programación</h3>
+          <p>Código mantenible, semántico y enfocado en rendimiento.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3 / Flex / Grid</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Tailwind / Styled</span>
+          </div>
+        </div>
+        <div class="skills-card">
+          <h3>Otras herramientas</h3>
+          <p>Stack complementario para flujos modernos de trabajo.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Git / GitHub</span>
+            <span class="skill-tag">Notion</span>
+            <span class="skill-tag">Canva</span>
+            <span class="skill-tag">Power BI / Tableau (básico)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="projects">
+      <h2 class="section-title">Proyectos seleccionados</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-chip">Landing page</div>
+          <h3>Portfolio Dark Mode</h3>
+          <p>
+            Landing minimalista en modo oscuro para mostrar CV y proyectos, con foco
+            en accesibilidad y velocidad de carga.
+          </p>
+          <div class="project-tech">HTML · CSS · JavaScript</div>
+          <div class="project-actions">
+            <a href="#" target="_blank" rel="noreferrer">Ver demo</a>
+          </div>
+          <div class="project-glow"></div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-chip">Dashboard</div>
+          <h3>Panel de analítica</h3>
+          <p>
+            Dashboard responsive con gráficas para visualizar métricas de negocio
+            y comportamiento de usuarios.
+          </p>
+          <div class="project-tech">React · Chart.js · API REST</div>
+          <div class="project-actions">
+            <a href="#" target="_blank" rel="noreferrer">Ver repositorio</a>
+          </div>
+          <div class="project-glow"></div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-chip">E-commerce</div>
+          <h3>Tienda minimalista</h3>
+          <p>
+            Interfaz limpia para una tienda online, enfatizando el recorrido del
+            usuario y la claridad en el catálogo.
+          </p>
+          <div class="project-tech">React · Tailwind · Integración pago</div>
+          <div class="project-actions">
+            <a href="#" target="_blank" rel="noreferrer">Ver detalles</a>
+          </div>
+          <div class="project-glow"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section id="experience">
+      <h2 class="section-title">Experiencia &amp; Educación</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">2022 — Actual</div>
+          <div class="timeline-role">Desarrollador Frontend</div>
+          <div class="timeline-org">Empresa / Freelance</div>
+          <div class="timeline-desc">
+            Desarrollo de interfaces responsive, optimización de rendimiento,
+            colaboración con diseño y producto.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">2020 — 2022</div>
+          <div class="timeline-role">Diseñador UI Jr.</div>
+          <div class="timeline-org">Agencia / Startup</div>
+          <div class="timeline-desc">
+            Creación de maquetas, sistemas de diseño y handoff a desarrollo.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">2018 — 2022</div>
+          <div class="timeline-role">Licenciatura / Ingeniería</div>
+          <div class="timeline-org">Nombre de la Universidad</div>
+          <div class="timeline-desc">
+            Formación en desarrollo de software, fundamentos de diseño y metodologías ágiles.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>Disponible para proyectos, colaboraciones y posiciones remotas.</div>
+      <div class="footer-links">
+        <a href="mailto:tucorreo@ejemplo.com">Correo</a>
+        <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="#" target="_blank" rel="noreferrer">Portafolio completo</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

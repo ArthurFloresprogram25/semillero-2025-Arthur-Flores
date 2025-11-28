@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio PDF - Tu Nombre</title>
+    
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Estilos específicos para PDF -->
+    <link rel="stylesheet" href="print-styles.css">
+    
+    <meta name="description" content="Portafolio profesional - Desarrollador Full Stack">
+</head>
+<body class="pdf-version">
+    
+    <!-- Botón para generar PDF (se oculta al imprimir) -->
+    <div class="no-print" style="position: fixed; top: 20px; right: 20px; z-index: 9999;">
+        <button onclick="generatePDF()" style="
+            background: #00ADB5; 
+            color: white; 
+            padding: 12px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        ">📄 Generar PDF</button>
+    </div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <h1>TU NOMBRE COMPLETO AQUÍ</h1>
+            <h2>Arquitecto de Experiencias Digitales & <span class="highlight">Desarrollador Líder</span></h2>
+            <p>
+                Construyendo el futuro de la web con <span class="highlight">diseño inteligente</span> y código impecable.
+                Transformo ideas complejas en soluciones digitales elegantes y funcionales.
+            </p>
+            
+            <!-- Información de contacto destacada para PDF -->
+            <div class="contact-info-pdf">
+                <h3>Información de Contacto</h3>
+                <p><strong>Email:</strong> tu.email@ejemplo.com</p>
+                <p><strong>Teléfono:</strong> +1 (555) 123-4567</p>
+                <p><strong>LinkedIn:</strong> linkedin.com/in/tu-perfil</p>
+                <p><strong>GitHub:</strong> github.com/tu-usuario</p>
+                <p><strong>Portfolio:</strong> www.tu-sitio.com</p>
+            </div>
+        </section>
+
+        <!-- Sobre Mí -->
+        <section id="sobre-mi" class="section avoid-break">
+            <h3>Resumen Profesional</h3>
+            <p>
+                Mi pasión radica en la creación de productos digitales que no solo cumplen con los requisitos técnicos, sino que superan las expectativas del usuario a través de un diseño cuidadoso y una implementación robusta. Me especializo en llevar proyectos desde la <span class="highlight">conceptualización UX</span> hasta la <span class="highlight">implementación frontend/backend</span>, asegurando coherencia y calidad en cada etapa.
+            </p>
+            <p>
+                Con más de <span class="highlight">5 años de experiencia</span> en el desarrollo web, he trabajado con startups innovadoras y empresas establecidas, creando soluciones que impactan positivamente en la vida de miles de usuarios. Mi enfoque combina las mejores prácticas técnicas con una comprensión profunda de las necesidades del negocio.
+            </p>
+            <p>
+                Creo firmemente en el <span class="highlight">aprendizaje continuo</span> y la importancia de mantenerse actualizado con las últimas tendencias tecnológicas. Cuando no estoy programando, disfruto contribuyendo a proyectos de código abierto y mentoreando a nuevos desarrolladores.
+            </p>
+        </section>
+
+        <!-- Habilidades -->
+        <section id="habilidades" class="section page-break avoid-break">
+            <h3>Competencias Técnicas</h3>
+            <p>Stack tecnológico completo desde diseño de interfaces hasta arquitectura de sistemas complejos.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🚀</div>
+                    <h4>Frontend Development</h4>
+                    <p><strong>Tecnologías:</strong> React, Vue.js, Angular, TypeScript, HTML5, CSS3, Sass, Tailwind CSS</p>
+                    <p><strong>Experiencia:</strong> 5+ años desarrollando interfaces responsivas y optimizadas</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h4>Backend Development</h4>
+                    <p><strong>Tecnologías:</strong> Node.js, Python, Express, FastAPI, PostgreSQL, MongoDB, Redis</p>
+                    <p><strong>Experiencia:</strong> APIs RESTful, GraphQL, microservicios y arquitectura escalable</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">☁️</div>
+                    <h4>DevOps & Cloud</h4>
+                    <p><strong>Tecnologías:</strong> AWS, Docker, Kubernetes, CI/CD, GitHub Actions, Terraform</p>
+                    <p><strong>Experiencia:</strong> Deployment automatizado y gestión de infraestructura</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h4>Diseño UX/UI</h4>
+                    <p><strong>Tecnologías:</strong> Figma, Adobe XD, Sketch, Prototyping, User Research</p>
+                    <p><strong>Experiencia:</strong> Diseño centrado en el usuario y sistemas de design</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h4>Mobile Development</h4>
+                    <p><strong>Tecnologías:</strong> React Native, Flutter, Progressive Web Apps</p>
+                    <p><strong>Experiencia:</strong> Aplicaciones nativas y multiplataforma</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🔧</div>
+                    <h4>Herramientas & Testing</h4>
+                    <p><strong>Tecnologías:</strong> Git, Webpack, Vite, Jest, Cypress, Storybook</p>
+                    <p><strong>Experiencia:</strong> Desarrollo con TDD y automatización de pruebas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiencia Profesional -->
+        <section class="section page-break avoid-break">
+            <h3>Experiencia Profesional</h3>
+            
+            <div class="experience-item">
+                <h4>Senior Full Stack Developer - TechCorp Inc.</h4>
+                <p style="color: #666; font-style: italic; margin-bottom: 10pt;">Enero 2022 - Presente (3 años)</p>
+                <ul style="margin-left: 20pt; color: #555;">
+                    <li>Lidero el desarrollo de aplicaciones web de alta escala sirviendo a 50,000+ usuarios</li>
+                    <li>Mentoreo a equipo de 6 desarrolladores junior y defino arquitectura técnica</li>
+                    <li>Implementé mejoras que redujeron el tiempo de carga en un 40% y aumentaron la conversión en 25%</li>
+                    <li>Tecnologías principales: React, Node.js, PostgreSQL, AWS, Docker</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h4>Full Stack Developer - StartupXYZ</h4>
+                <p style="color: #666; font-style: italic; margin-bottom: 10pt;">Marzo 2020 - Diciembre 2021 (2 años)</p>
+                <ul style="margin-left: 20pt; color: #555;">
+                    <li>Desarrollé desde cero la plataforma principal de la startup</li>
+                    <li>Escalé la aplicación desde MVP hasta producto que sirvió a 10,000+ usuarios activos</li>
+                    <li>Colaboré estrechamente con equipos de diseño y producto en metodologías ágiles</li>
+                    <li>Tecnologías principales: Vue.js, Python, FastAPI, MongoDB, Redis</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h4>Frontend Developer - DigitalAgency</h4>
+                <p style="color: #666; font-style: italic; margin-bottom: 10pt;">Junio 2019 - Febrero 2020 (9 meses)</p>
+                <ul style="margin-left: 20pt; color: #555;">
+                    <li>Creé interfaces responsivas para clientes del sector financiero y retail</li>
+                    <li>Especialización en optimización de performance web y accesibilidad WCAG 2.1</li>
+                    <li>Desarrollé 15+ sitios web con React y TypeScript</li>
+                    <li>Tecnologías principales: React, TypeScript, Sass, Webpack</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Proyectos Destacados -->
+        <section id="proyectos" class="section page-break avoid-break">
+            <h3>Proyectos Destacados</h3>
+            <p>Selección de proyectos que demuestran experiencia técnica y capacidad de resolución de problemas complejos.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h4>🌱 EcoCommerce Platform</h4>
+                        <p><strong>Descripción:</strong> Plataforma de e-commerce sostenible con sistema de recompensas por compras eco-friendly. Implementé la arquitectura completa desde el diseño UX hasta el deployment en producción.</p>
+                        <p><strong>Resultados:</strong> 15,000+ usuarios registrados, 40% de incremento en ventas eco-friendly</p>
+                        <p><strong>Responsabilidades:</strong> Arquitectura full-stack, diseño de base de datos, integración con APIs de pago</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Stripe API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h4>🏥 HealthTrack Dashboard</h4>
+                        <p><strong>Descripción:</strong> Dashboard analítico para profesionales de la salud con visualizaciones interactivas y alertas en tiempo real. Procesamiento seguro de datos médicos sensibles cumpliendo con HIPAA.</p>
+                        <p><strong>Resultados:</strong> Reducción del 60% en tiempo de análisis de datos médicos</p>
+                        <p><strong>Responsabilidades:</strong> Visualización de datos, seguridad HIPAA, arquitectura real-time</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h4>💰 FinTech Mobile App</h4>
+                        <p><strong>Descripción:</strong> Aplicación móvil de gestión financiera personal con IA para análisis de gastos y recomendaciones inteligentes de ahorro. Machine learning para patrones de consumo.</p>
+                        <p><strong>Resultados:</strong> 25,000+ descargas, 4.8/5 estrellas en app stores</p>
+                        <p><strong>Responsabilidades:</strong> Desarrollo mobile, algoritmos ML, seguridad financiera</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Plaid API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h4>📚 Learning Management System</h4>
+                        <p><strong>Descripción:</strong> Plataforma educativa completa con sistema de videoconferencias, seguimiento de progreso y gamificación para aumentar el engagement estudiantil.</p>
+                        <p><strong>Resultados:</strong> 5,000+ estudiantes activos, 90% de satisfacción</p>
+                        <p><strong>Responsabilidades:</strong> Sistema de video, gamificación, analytics educativos</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">WebRTC</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educación y Certificaciones -->
+        <section class="section avoid-break">
+            <h3>Educación & Certificaciones</h3>
+            
+            <div class="experience-item">
+                <h4>🎓 Ingeniería en Sistemas Computacionales</h4>
+                <p style="color: #666; font-style: italic;">Universidad Tecnológica • 2016 - 2020</p>
+                <p>Especialización en Desarrollo de Software y Arquitectura de Sistemas</p>
+            </div>
+            
+            <div class="experience-item">
+                <h4>☁️ AWS Solutions Architect Associate</h4>
+                <p style="color: #666; font-style: italic;">Amazon Web Services • 2023</p>
+                <p>Certificación en diseño de arquitecturas escalables y seguras en AWS</p>
+            </div>
+            
+            <div class="experience-item">
+                <h4>🚀 Google Cloud Professional Developer</h4>
+                <p style="color: #666; font-style: italic;">Google Cloud Platform • 2022</p>
+                <p>Certificación en desarrollo de aplicaciones nativas en la nube</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p style="margin: 0; color: #333;"><strong>Portafolio Profesional</strong> - Desarrollado con pasión y código limpio</p>
+        <p style="margin: 5pt 0 0 0; font-size: 9pt; color: #666;">
+            📧 tu.email@ejemplo.com • 📱 +1 (555) 123-4567 • 🌐 www.tu-sitio.com
+        </p>
+    </footer>
+
+    <script>
+        function generatePDF() {
+            // Configurar título para el PDF
+            document.title = 'Portafolio_TuNombre_' + new Date().getFullYear();
+            
+            // Abrir diálogo de impresión
+            window.print();
+        }
+
+        // Auto-generar PDF si se accede con parámetro ?pdf=true
+        if (window.location.search.includes('pdf=true')) {
+            setTimeout(generatePDF, 1000);
+        }
+    </script>
+</body>
+</html>

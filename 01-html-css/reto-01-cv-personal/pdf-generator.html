@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de PDFs con HTML/CSS</title>
+    <style>
+        /* Estilos base */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .pdf-option {
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-option:hover {
+            border-color: #007bff;
+            box-shadow: 0 5px 15px rgba(0,123,255,0.1);
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .btn-success { background: #28a745; }
+        .btn-warning { background: #ffc107; color: #212529; }
+        .btn-info { background: #17a2b8; }
+
+        /* Estilos específicos para cada tipo de PDF */
+        
+        /* === CURRÍCULUM VITAE === */
+        @media print and (min-width: 0) {
+            .cv-template {
+                font-size: 11pt;
+                color: #333;
+            }
+            
+            .cv-template h1 {
+                font-size: 18pt;
+                color: #2c3e50;
+                border-bottom: 2pt solid #3498db;
+                padding-bottom: 10pt;
+            }
+            
+            .cv-template h2 {
+                font-size: 14pt;
+                color: #3498db;
+                margin-top: 20pt;
+                margin-bottom: 10pt;
+            }
+            
+            .cv-template .contact-info {
+                background: #ecf0f1;
+                padding: 15pt;
+                margin-bottom: 20pt;
+                border-left: 4pt solid #3498db;
+            }
+        }
+
+        /* === FACTURA === */
+        @media print {
+            .invoice-template {
+                font-size: 10pt;
+            }
+            
+            .invoice-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30pt;
+                padding-bottom: 15pt;
+                border-bottom: 2pt solid #007bff;
+            }
+            
+            .invoice-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20pt 0;
+            }
+            
+            .invoice-table th,
+            .invoice-table td {
+                border: 1pt solid #ddd;
+                padding: 8pt;
+                text-align: left;
+            }
+            
+            .invoice-table th {
+                background: #f8f9fa;
+                font-weight: 600;
+            }
+            
+            .invoice-total {
+                text-align: right;
+                margin-top: 20pt;
+                font-size: 12pt;
+                font-weight: 600;
+            }
+        }
+
+        /* === REPORTE === */
+        @media print {
+            .report-template {
+                font-size: 11pt;
+                line-height: 1.5;
+            }
+            
+            .report-template h1 {
+                text-align: center;
+                font-size: 16pt;
+                margin-bottom: 30pt;
+                color: #2c3e50;
+            }
+            
+            .report-section {
+                margin-bottom: 25pt;
+                page-break-inside: avoid;
+            }
+            
+            .chart-placeholder {
+                height: 200pt;
+                background: #f8f9fa;
+                border: 1pt dashed #dee2e6;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 15pt 0;
+            }
+        }
+
+        /* === CERTIFICADO === */
+        @media print {
+            .certificate-template {
+                text-align: center;
+                padding: 50pt;
+                border: 5pt solid #gold;
+                background: linear-gradient(45deg, #fff9c4, #fff);
+            }
+            
+            .certificate-template h1 {
+                font-size: 24pt;
+                color: #8b4513;
+                margin-bottom: 30pt;
+                text-transform: uppercase;
+                letter-spacing: 3pt;
+            }
+            
+            .certificate-text {
+                font-size: 14pt;
+                margin: 20pt 0;
+                font-style: italic;
+            }
+            
+            .certificate-name {
+                font-size: 18pt;
+                font-weight: bold;
+                color: #8b4513;
+                text-decoration: underline;
+                margin: 30pt 0;
+            }
+        }
+
+        @page {
+            margin: 2cm;
+            size: A4;
+            
+            @top-center {
+                content: "Documento generado automáticamente";
+                font-size: 9pt;
+                color: #666;
+            }
+            
+            @bottom-right {
+                content: "Página " counter(page);
+                font-size: 9pt;
+                color: #666;
+            }
+        }
+
+        /* Ocultar controles al imprimir */
+        @media print {
+            .no-print,
+            .container > h1,
+            .pdf-option,
+            button,
+            .btn {
+                display: none !important;
+            }
+            
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+        }
+
+        /* Mostrar solo el template seleccionado al imprimir */
+        @media print {
+            .template {
+                display: none;
+            }
+            
+            .template.active {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="no-print">🖨️ Generador de PDFs con HTML + CSS</h1>
+        
+        <div class="no-print">
+            <p>Selecciona el tipo de documento que quieres generar en PDF:</p>
+            
+            <div class="pdf-option">
+                <h3>📄 Currículum Vitae</h3>
+                <p>Genera un CV profesional con formato optimizado para PDF</p>
+                <button class="btn btn-success" onclick="showTemplate('cv')">Ver Template</button>
+                <button class="btn" onclick="generatePDF('cv')">Generar PDF</button>
+            </div>
+            
+            <div class="pdf-option">
+                <h3>🧾 Factura</h3>
+                <p>Crea facturas profesionales con cálculos automáticos</p>
+                <button class="btn btn-success" onclick="showTemplate('invoice')">Ver Template</button>
+                <button class="btn" onclick="generatePDF('invoice')">Generar PDF</button>
+            </div>
+            
+            <div class="pdf-option">
+                <h3>📊 Reporte</h3>
+                <p>Reportes corporativos con gráficos y tablas</p>
+                <button class="btn btn-success" onclick="showTemplate('report')">Ver Template</button>
+                <button class="btn" onclick="generatePDF('report')">Generar PDF</button>
+            </div>
+            
+            <div class="pdf-option">
+                <h3>🏆 Certificado</h3>
+                <p>Certificados de reconocimiento elegantes</p>
+                <button class="btn btn-success" onclick="showTemplate('certificate')">Ver Template</button>
+                <button class="btn" onclick="generatePDF('certificate')">Generar PDF</button>
+            </div>
+        </div>
+
+        <!-- TEMPLATE: CURRÍCULUM VITAE -->
+        <div id="cv-template" class="template cv-template" style="display: none;">
+            <div class="contact-info">
+                <h1>Juan Pérez Desarrollador</h1>
+                <p><strong>Email:</strong> juan.perez@email.com | <strong>Teléfono:</strong> +1 (555) 123-4567</p>
+                <p><strong>LinkedIn:</strong> linkedin.com/in/juanperez | <strong>GitHub:</strong> github.com/juanperez</p>
+            </div>
+            
+            <h2>Perfil Profesional</h2>
+            <p>Desarrollador Full Stack con 5+ años de experiencia en tecnologías web modernas. Especializado en React, Node.js y arquitecturas escalables. Apasionado por crear soluciones innovadoras y liderar equipos técnicos.</p>
+            
+            <h2>Experiencia Laboral</h2>
+            <div style="margin-bottom: 15pt;">
+                <h4 style="margin-bottom: 5pt; color: #2c3e50;">Senior Developer - TechCorp (2022-2024)</h4>
+                <ul style="margin-left: 20pt;">
+                    <li>Lideré desarrollo de aplicaciones web para 50,000+ usuarios</li>
+                    <li>Implementé arquitectura microservicios con Docker y Kubernetes</li>
+                    <li>Mentoré equipo de 4 desarrolladores junior</li>
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 15pt;">
+                <h4 style="margin-bottom: 5pt; color: #2c3e50;">Full Stack Developer - StartupXYZ (2020-2022)</h4>
+                <ul style="margin-left: 20pt;">
+                    <li>Desarrollé MVP de plataforma de e-commerce</li>
+                    <li>Optimicé performance reduciendo tiempo de carga en 60%</li>
+                    <li>Integré APIs de pago y sistemas de notificaciones</li>
+                </ul>
+            </div>
+            
+            <h2>Habilidades Técnicas</h2>
+            <p><strong>Frontend:</strong> React, Vue.js, TypeScript, HTML5, CSS3, Tailwind</p>
+            <p><strong>Backend:</strong> Node.js, Python, Express, FastAPI, PostgreSQL, MongoDB</p>
+            <p><strong>DevOps:</strong> Docker, Kubernetes, AWS, CI/CD, GitHub Actions</p>
+            
+            <h2>Educación</h2>
+            <p><strong>Ingeniería en Sistemas</strong> - Universidad Tecnológica (2016-2020)</p>
+        </div>
+
+        <!-- TEMPLATE: FACTURA -->
+        <div id="invoice-template" class="template invoice-template" style="display: none;">
+            <div class="invoice-header">
+                <div>
+                    <h1 style="margin: 0; color: #007bff;">FACTURA #001</h1>
+                    <p>Fecha: 25 de Noviembre, 2025</p>
+                </div>
+                <div style="text-align: right;">
+                    <h3 style="margin: 0;">Tu Empresa S.L.</h3>
+                    <p>Calle Principal 123<br>
+                    28001 Madrid, España<br>
+                    Tel: +34 91 123 4567</p>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 30pt;">
+                <h3>Facturar a:</h3>
+                <p><strong>Cliente Ejemplo S.A.</strong><br>
+                Avenida Comercial 456<br>
+                08001 Barcelona, España</p>
+            </div>
+            
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Desarrollo de Aplicación Web</td>
+                        <td>1</td>
+                        <td>€2,500.00</td>
+                        <td>€2,500.00</td>
+                    </tr>
+                    <tr>
+                        <td>Hosting y Mantenimiento (6 meses)</td>
+                        <td>6</td>
+                        <td>€150.00</td>
+                        <td>€900.00</td>
+                    </tr>
+                    <tr>
+                        <td>Consultoría Técnica</td>
+                        <td>10</td>
+                        <td>€80.00</td>
+                        <td>€800.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="invoice-total">
+                <p>Subtotal: €4,200.00</p>
+                <p>IVA (21%): €882.00</p>
+                <p style="font-size: 14pt; border-top: 2pt solid #007bff; padding-top: 10pt;">
+                    <strong>TOTAL: €5,082.00</strong>
+                </p>
+            </div>
+            
+            <div style="margin-top: 40pt; font-size: 9pt; color: #666;">
+                <p>Términos de pago: 30 días | Método de pago: Transferencia bancaria</p>
+                <p>IBAN: ES12 3456 7890 1234 5678 9012 | BIC: EXAMPLESP</p>
+            </div>
+        </div>
+
+        <!-- TEMPLATE: REPORTE -->
+        <div id="report-template" class="template report-template" style="display: none;">
+            <h1>Reporte Mensual de Desarrollo</h1>
+            <p style="text-align: center; font-style: italic; margin-bottom: 40pt;">
+                Noviembre 2025 • Departamento de Tecnología
+            </p>
+            
+            <div class="report-section">
+                <h2>📈 Resumen Ejecutivo</h2>
+                <p>Durante el mes de noviembre se completaron exitosamente 3 proyectos principales, se implementaron 15 nuevas funcionalidades y se resolvieron 98% de los tickets de soporte técnico dentro del SLA establecido.</p>
+            </div>
+            
+            <div class="report-section">
+                <h2>🚀 Proyectos Completados</h2>
+                <ul>
+                    <li><strong>E-commerce Platform V2.0:</strong> Migración completa a React 18 y optimización de performance</li>
+                    <li><strong>Mobile App iOS:</strong> Lanzamiento en App Store con funcionalidades de pago</li>
+                    <li><strong>API Gateway:</strong> Implementación de microservicios con autenticación OAuth 2.0</li>
+                </ul>
+            </div>
+            
+            <div class="report-section">
+                <h2>📊 Métricas de Desarrollo</h2>
+                <div class="chart-placeholder">
+                    <p style="color: #666;">📊 Gráfico de Productividad<br>
+                    <small>Commits: 245 | Pull Requests: 67 | Issues Cerradas: 89</small></p>
+                </div>
+                
+                <table style="width: 100%; border-collapse: collapse; margin-top: 20pt;">
+                    <thead>
+                        <tr style="background: #f8f9fa;">
+                            <th style="border: 1pt solid #ddd; padding: 10pt;">KPI</th>
+                            <th style="border: 1pt solid #ddd; padding: 10pt;">Objetivo</th>
+                            <th style="border: 1pt solid #ddd; padding: 10pt;">Actual</th>
+                            <th style="border: 1pt solid #ddd; padding: 10pt;">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">Tiempo de Respuesta API</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">&lt; 200ms</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">185ms</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt; color: green;">✅ Cumplido</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">Cobertura de Tests</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">&gt; 85%</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">92%</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt; color: green;">✅ Superado</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">Bugs en Producción</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">&lt; 5</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt;">2</td>
+                            <td style="border: 1pt solid #ddd; padding: 10pt; color: green;">✅ Cumplido</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="report-section">
+                <h2>🎯 Objetivos para Diciembre</h2>
+                <ul>
+                    <li>Implementar sistema de notificaciones push</li>
+                    <li>Migrar base de datos a PostgreSQL 15</li>
+                    <li>Completar documentación técnica de APIs</li>
+                    <li>Iniciar proyecto de Machine Learning para recomendaciones</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TEMPLATE: CERTIFICADO -->
+        <div id="certificate-template" class="template certificate-template" style="display: none;">
+            <div style="border: 8pt double #8b4513; padding: 60pt; margin: 40pt;">
+                <h1>Certificado de Excelencia</h1>
+                
+                <p class="certificate-text">
+                    Se otorga el presente certificado a
+                </p>
+                
+                <div class="certificate-name">
+                    JUAN PÉREZ DESARROLLADOR
+                </div>
+                
+                <p class="certificate-text">
+                    Por su excepcional desempeño y dedicación en el desarrollo de aplicaciones web,
+                    demostrando habilidades sobresalientes en tecnologías modernas y liderazgo técnico.
+                </p>
+                
+                <p class="certificate-text" style="margin-top: 40pt;">
+                    Otorgado el 25 de Noviembre de 2025
+                </p>
+                
+                <div style="display: flex; justify-content: space-between; margin-top: 60pt;">
+                    <div style="border-top: 2pt solid #8b4513; padding-top: 10pt; width: 200pt; text-align: center;">
+                        <p style="margin: 0; font-size: 12pt;"><strong>Director Técnico</strong></p>
+                    </div>
+                    <div style="border-top: 2pt solid #8b4513; padding-top: 10pt; width: 200pt; text-align: center;">
+                        <p style="margin: 0; font-size: 12pt;"><strong>CEO</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTemplate(type) {
+            // Ocultar todos los templates
+            document.querySelectorAll('.template').forEach(template => {
+                template.style.display = 'none';
+                template.classList.remove('active');
+            });
+            
+            // Mostrar el template seleccionado
+            const template = document.getElementById(type + '-template');
+            template.style.display = 'block';
+            template.classList.add('active');
+            
+            // Scroll al template
+            template.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generatePDF(type) {
+            // Mostrar solo el template seleccionado
+            showTemplate(type);
+            
+            // Configurar título del documento
+            const titles = {
+                'cv': 'Curriculum_Vitae_Juan_Perez',
+                'invoice': 'Factura_001_' + new Date().toISOString().substr(0, 10),
+                'report': 'Reporte_Mensual_' + new Date().toISOString().substr(0, 7),
+                'certificate': 'Certificado_Excelencia_Juan_Perez'
+            };
+            
+            document.title = titles[type] || 'Documento_PDF';
+            
+            // Esperar un momento y abrir diálogo de impresión
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+
+        // Función para generar PDF automáticamente si se pasa parámetro en URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const autoGenerate = urlParams.get('generate');
+        if (autoGenerate) {
+            setTimeout(() => generatePDF(autoGenerate), 1000);
+        }
+    </script>
+</body>
+</html>

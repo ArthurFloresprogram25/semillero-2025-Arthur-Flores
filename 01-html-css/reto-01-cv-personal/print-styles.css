@@ -1,0 +1,274 @@
+/* CSS específico para PDF/Impresión */
+
+/* Estilos base para PDF */
+@media print {
+    /* Reset para impresión */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* Configuración de página */
+    @page {
+        size: A4;
+        margin: 2cm 1.5cm;
+        
+        /* Header personalizado */
+        @top-center {
+            content: "Portafolio Profesional - Tu Nombre";
+            font-family: 'Poppins', sans-serif;
+            font-size: 10pt;
+            color: #666;
+        }
+        
+        /* Footer con numeración */
+        @bottom-right {
+            content: "Página " counter(page) " de " counter(pages);
+            font-family: 'Roboto', sans-serif;
+            font-size: 9pt;
+            color: #666;
+        }
+    }
+
+    /* Ocultar elementos no necesarios en PDF */
+    .header,
+    .nav,
+    .nav-links,
+    .no-print,
+    .contact-form,
+    .social-links {
+        display: none !important;
+    }
+
+    /* Ajustar el contenedor principal */
+    body {
+        background: white !important;
+        color: #333 !important;
+        font-size: 11pt;
+        line-height: 1.4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Estilos para secciones en PDF */
+    .section {
+        background: white !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin-bottom: 20pt;
+        padding: 15pt 0;
+        page-break-inside: avoid;
+    }
+
+    /* Hero section para PDF */
+    .hero {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        text-align: center;
+        padding: 30pt 20pt;
+        margin-bottom: 20pt;
+        border-bottom: 3pt solid #00ADB5;
+        page-break-after: avoid;
+    }
+
+    /* Tipografía para PDF */
+    h1 {
+        font-size: 24pt !important;
+        color: #333 !important;
+        margin-bottom: 10pt;
+        page-break-after: avoid;
+    }
+
+    h2 {
+        font-size: 16pt !important;
+        color: #00ADB5 !important;
+        margin-bottom: 15pt;
+        page-break-after: avoid;
+    }
+
+    h3 {
+        font-size: 14pt !important;
+        color: #333 !important;
+        margin-bottom: 10pt;
+        padding-bottom: 5pt;
+        border-bottom: 1pt solid #00ADB5;
+        page-break-after: avoid;
+    }
+
+    h4 {
+        font-size: 12pt !important;
+        color: #00ADB5 !important;
+        margin-bottom: 8pt;
+        page-break-after: avoid;
+    }
+
+    p {
+        font-size: 10pt !important;
+        line-height: 1.5;
+        margin-bottom: 8pt;
+        color: #555 !important;
+        text-align: justify;
+    }
+
+    /* Skills grid para PDF */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15pt;
+        margin: 15pt 0;
+        page-break-inside: avoid;
+    }
+
+    .skill-card {
+        background: #f8f9fa !important;
+        border: 1pt solid #dee2e6;
+        padding: 12pt;
+        border-radius: 0;
+        page-break-inside: avoid;
+    }
+
+    .skill-icon {
+        width: 25pt;
+        height: 25pt;
+        background: #00ADB5 !important;
+        border-radius: 50%;
+        margin: 0 auto 8pt;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12pt;
+        color: white !important;
+    }
+
+    /* Projects grid para PDF */
+    .projects-grid {
+        display: block;
+        margin: 15pt 0;
+    }
+
+    .project-card {
+        background: #f8f9fa !important;
+        border: 1pt solid #dee2e6;
+        margin-bottom: 15pt;
+        padding: 15pt;
+        page-break-inside: avoid;
+    }
+
+    .project-image {
+        display: none; /* Ocultar en PDF */
+    }
+
+    .project-content h4 {
+        margin-top: 0;
+    }
+
+    /* Tech tags para PDF */
+    .project-tech {
+        margin-top: 10pt;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5pt;
+    }
+
+    .tech-tag {
+        background: #e9ecef !important;
+        color: #495057 !important;
+        border: 1pt solid #00ADB5;
+        padding: 3pt 8pt;
+        border-radius: 10pt;
+        font-size: 8pt;
+        font-weight: 500;
+    }
+
+    /* Highlight text para PDF */
+    .highlight {
+        color: #00ADB5 !important;
+        font-weight: 600;
+        text-decoration: underline;
+    }
+
+    /* Botones en PDF (convertir a texto) */
+    .button {
+        display: inline !important;
+        background: none !important;
+        color: #00ADB5 !important;
+        border: 1pt solid #00ADB5 !important;
+        padding: 5pt 10pt !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        border-radius: 15pt;
+        margin: 5pt;
+    }
+
+    /* Footer para PDF */
+    .footer {
+        background: #f8f9fa !important;
+        border-top: 2pt solid #00ADB5;
+        text-align: center;
+        padding: 15pt;
+        margin-top: 30pt;
+        page-break-inside: avoid;
+    }
+
+    /* Información de contacto destacada */
+    .contact-info-pdf {
+        background: #e7f3ff !important;
+        border: 2pt solid #00ADB5;
+        padding: 15pt;
+        margin: 20pt 0;
+        text-align: center;
+        page-break-inside: avoid;
+    }
+
+    .contact-info-pdf h3 {
+        margin-top: 0;
+        color: #00ADB5 !important;
+    }
+
+    .contact-info-pdf p {
+        margin: 5pt 0;
+        font-weight: 600;
+        color: #333 !important;
+    }
+
+    /* Saltos de página */
+    .page-break {
+        page-break-before: always;
+    }
+
+    .avoid-break {
+        page-break-inside: avoid;
+    }
+
+    /* Estilo para lista de experiencias */
+    .experience-item {
+        margin-bottom: 15pt;
+        padding-bottom: 10pt;
+        border-bottom: 1pt dotted #ccc;
+        page-break-inside: avoid;
+    }
+
+    .experience-item:last-child {
+        border-bottom: none;
+    }
+
+    /* URLs visibles en PDF */
+    a[href^="http"]:after,
+    a[href^="https"]:after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #666;
+    }
+
+    /* Ocultar JavaScript y elementos interactivos */
+    script,
+    .interactive-only {
+        display: none !important;
+    }
+}
