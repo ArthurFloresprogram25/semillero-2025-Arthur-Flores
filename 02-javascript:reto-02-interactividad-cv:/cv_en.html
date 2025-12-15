@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Arturo Flores</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="cv_style.css">
+    
+</head>
+<body>
+    <!-- Action buttons (screen only) -->
+    <div class="action-buttons no-print">
+        <button class="btn-action btn-download" onclick="window.print()">
+            <i class="fas fa-download"></i>
+            <span>Download PDF</span>
+        </button>
+        <button class="btn-action btn-theme" id="theme-toggle" title="Change theme">
+            <i class="fas fa-sun"></i>
+            <span>Light Theme</span>
+        </button>
+        <a href="cv.html" class="btn-action btn-lang" title="Cambiar a Español">
+            <i class="fas fa-globe"></i>
+            <span>Español</span>
+        </a>
+        <a href="index_en.html" class="btn-action btn-back">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </a>
+    </div>
+    
+    <div class="cv-wrapper">
+        <!-- Header -->
+        <header class="cv-header">
+            <h1>Arturo Flores</h1>
+            <div class="title">Developer Analyst · Designer · Automator</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:arthurr2656@email.com">arthurr2656@email.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+525614088031">+52 561 408 8031</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Mexico City, Mexico</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/arturo_flores" target="_blank">linkedin.com/in/arturo_flores</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/arturoflores" target="_blank">github.com/arturoflores</a>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Professional Profile -->
+        <section class="cv-section">
+            <h3 class="section-title">Professional Profile</h3>
+            <p class="profile-text">I build web experiences, software systems and data models that solve real problems. I focus on clean design, performance, automation and process optimization. +3 years creating digital products with specialization in Python, React and data analysis. Results-oriented and continuously improving, with fast adaptation to new technologies.</p>
+        </section>
+        
+        <!-- Work Experience -->
+        <section class="cv-section" id="experiencia">
+            <h3 class="section-title">Work Experience</h3>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Developer Analyst</div>
+                        <div class="job-company">Finance Sector</div>
+                    </div>
+                    <div class="job-period">2023 — Present</div>
+                </div>
+                <div class="job-description">Software development for database management, time control and data analysis with Python and MySQL. Process automation and internal workflow improvements.</div>
+                <ul class="job-achievements">
+                    <li>Implemented scripts to reduce operational times.</li>
+                    <li>Optimized queries and data models.</li>
+                    <li>Automated reports and internal dashboards.</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Full Stack Designer</div>
+                        <div class="job-company">Consulting</div>
+                    </div>
+                    <div class="job-period">2022 — 2022</div>
+                </div>
+                <div class="job-description">Corporate website creation, support on machine learning models and API development.</div>
+                <ul class="job-achievements">
+                    <li>Designed and deployed a responsive institutional site.</li>
+                    <li>Integrated REST endpoints for internal services.</li>
+                    <li>Collaborated on ML model adjustments.</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Data Analyst</div>
+                        <div class="job-company">Gadmar</div>
+                    </div>
+                    <div class="job-period">2021 — 2022</div>
+                </div>
+                <div class="job-description">Data management and analysis, database administration and visualization with Tableau.</div>
+                <ul class="job-achievements">
+                    <li>Created key metrics dashboards.</li>
+                    <li>Normalized and cleaned data for reporting.</li>
+                    <li>Optimized database structures for queries.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Technical Skills -->
+        <section class="cv-section">
+            <h3 class="section-title">Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Design & UI/UX</h4>
+                    <div class="skill-list">Figma, Photoshop, Design Systems, Responsive Design</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Frontend & Programming</h4>
+                    <div class="skill-list">HTML5, CSS3 (Flex/Grid), JavaScript, React</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Backend & Databases</h4>
+                    <div class="skill-list">Node.js, Java, Python, SQL/PostgreSQL, REST APIs, PHP</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Other tools</h4>
+                    <div class="skill-list">Git/GitHub, Trello, Canva, Power BI, Tableau, RPA Robots</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Testing & Optimization</h4>
+                    <div class="skill-list">Jest, Testing Library, Lighthouse, Web Vitals, SEO</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Selected Projects -->
+        <section class="cv-section">
+            <h3 class="section-title">Selected Projects</h3>
+            
+            <div class="project-item">
+                <div class="project-name">Portfolio Dark Mode</div>
+                <div class="project-description">Minimal dark-mode landing to showcase CV and projects, focused on accessibility and speed.</div>
+                <div class="project-tech">HTML · CSS · JavaScript</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-name">Analytics Dashboard</div>
+                <div class="project-description">Responsive dashboard with charts to visualize business and user metrics.</div>
+                <div class="project-tech">React · Chart.js · REST API</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-name">Minimal Shop</div>
+                <div class="project-description">Clean e-commerce interface focused on user journey and catalog clarity.</div>
+                <div class="project-tech">React · Tailwind · Payment integration</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-name">Collaborative Task Manager</div>
+                <div class="project-description">App with drag & drop, real-time notifications and collaboration.</div>
+                <div class="project-tech">React · Firebase · Material-UI</div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-name">Real Estate Site</div>
+                <div class="project-description">Website for contact and promotion of real estate investment.</div>
+                <div class="project-tech">PHP · MySQL · HTML · CSS · JS</div>
+            </div>
+        </section>
+        
+        <!-- Education -->
+        <section class="cv-section">
+            <h3 class="section-title">Education</h3>
+            
+            <div class="education-item">
+                <div class="degree">Bachelor's Degree / Geophysical Engineering</div>
+                <div class="institution">UNAM</div>
+                <div class="period">2016 — 2022</div>
+            </div>
+        </section>
+        
+        <!-- Contact / Availability -->
+        <section class="contact-section" id="contacto">
+            <h3 class="section-title">Available for Collaborations</h3>
+            <div class="contact-intro"><strong>Got a project?</strong> Available for software development, automation, process optimization and data analysis. Focused on functional solutions with quality and speed.</div>
+            
+            <div class="contact-methods">
+                <a href="mailto:arthurr2656@email.com" class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-details">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">arthurr2656@email.com</div>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/525614088031" target="_blank" class="contact-method">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="contact-details">
+                        <div class="contact-label">WhatsApp</div>
+                        <div class="contact-value">+52 561 408 8031</div>
+                    </div>
+                </a>
+                
+                <a href="tel:+525614088031" class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <div class="contact-details">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+52 561 408 8031</div>
+                    </div>
+                </a>
+                
+                <a href="https://linkedin.com/in/arturo_flores" target="_blank" class="contact-method">
+                    <i class="fab fa-linkedin"></i>
+                    <div class="contact-details">
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">linkedin.com/in/arturo_flores</div>
+                    </div>
+                </a>
+                
+                <a href="https://github.com/arturoflores" target="_blank" class="contact-method">
+                    <i class="fab fa-github"></i>
+                    <div class="contact-details">
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">github.com/arturoflores</div>
+                    </div>
+                </a>
+                
+                <div class="contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-details">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Mexico City, MX</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lang-switch">
+                <a href="cv.html" class="lang-btn" title="Cambiar a Español">Español / English</a>
+            </div>
+        </section>
+    </div>
+    
+    <script src="js/script_cv.js"></script>
+    <script>
+        // Theme switching system
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('cv-theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeButton(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('cv-theme', newTheme);
+            updateThemeButton(newTheme);
+        });
+        
+        function updateThemeButton(theme) {
+            if (theme === 'light') {
+                themeIcon.className = 'fas fa-moon';
+                themeText.textContent = 'Dark Theme';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Light Theme';
+            }
+        }
+    </script>
+</body>
+</html>

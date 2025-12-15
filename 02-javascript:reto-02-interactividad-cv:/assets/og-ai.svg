@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+    <style>
+      .bg{fill:#06121a}
+      .glow{fill:url(#g)}
+      .txt{font-family:Arial, Helvetica, sans-serif;fill:#fff;font-weight:700}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="630" rx="24"/>
+  <g transform="translate(80,90)">
+    <rect x="0" y="0" width="440" height="300" rx="16" fill="#071826" opacity="0.95"/>
+    <rect x="14" y="14" width="412" height="44" rx="8" fill="#0b1724"/>
+    <circle cx="36" cy="36" r="8" fill="#ff6b6b"/>
+    <circle cx="68" cy="36" r="8" fill="#ffd166"/>
+    <circle cx="100" cy="36" r="8" fill="#4ee1a1"/>
+    <rect x="20" y="80" width="396" height="180" rx="8" fill="#021018"/>
+  </g>
+  <g transform="translate(560,160)">
+    <circle cx="160" cy="55" r="110" fill="url(#g)" opacity="0.95"/>
+    <path d="M120 115c0-24 18-36 40-36s40 12 40 36-18 36-40 36-40-12-40-36z" fill="#fff" opacity="0.95"/>
+    <rect x="155" y="40" width="16" height="28" rx="3" fill="#fff"/>
+  </g>
+  <text x="80" y="460" class="txt" font-size="48">Arturo Flores — Portafolio</text>
+  <text x="80" y="520" class="txt" font-size="28" fill="#cbd5e1">Automatización · Machine Learning · Data Analysis</text>
+</svg>
